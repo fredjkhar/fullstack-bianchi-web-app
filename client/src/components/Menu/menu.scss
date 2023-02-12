@@ -1,0 +1,106 @@
+@import '../mixins';
+@import '../vars';
+
+.menu {
+    width: 100vw;
+    height: 100vh;
+    background: url('../../Assets/background_1.jpg') no-repeat center;
+    @include flex(row, center, center);
+    .wrapper {
+        @include flex(row, space-between, center);
+        font-family: $base-font;
+        color: white;
+        width: 70%;
+        
+        
+        .left-section, .right-section {
+            &-title {
+                text-align: center;
+                font-family: $alternative-font;
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 75% 25%;
+                width: auto;
+                min-width: 250px;
+                min-height: 350px;
+                grid-template-rows: repeat(auto);
+                text-transform: capitalize;
+                padding: 1rem;
+
+                span:nth-of-type(2n) {
+                    justify-self: end;
+                    align-self: center;
+                }
+
+                span:nth-of-type(2n + 1) {
+                    justify-self: start;
+                    align-self: center;
+                }
+            }
+
+            @media (min-width: $extra-large) {
+                &-title {
+                    font-size: 2.5rem;
+                }
+                font-size: 1.5rem;
+                width: 450px;
+            }
+
+            @media (min-width: $large) and (max-width: $extra-large) {
+                &-title {
+                    font-size: 2rem;
+                }
+                font-size: 1.5rem;
+                width: 400px;
+            }
+
+            @media (min-width: $medium) and (max-width: $large) {
+                &-title {
+                    font-size: 1.5rem;
+                }
+                font-size: 1.2rem;
+                width: 300px;
+            }
+
+            @media (min-width: $small) and (max-width: $medium) {
+                &-title {
+                    font-size: 1.4rem;
+                }
+                font-size: 1.1rem;
+            }
+
+        }
+
+        img {
+            
+            width: 200px;
+            margin: 10px;
+
+            &:hover {
+                transform: rotateY(30deg) scale(1.05);
+                transition: all 1s ease-in-out;
+            }
+
+            @media (min-width: $extra-large) {
+                width: 200px;
+            }
+
+            @media (min-width: $large) and (max-width: $extra-large) {
+                width: 180px;
+            }
+
+            @media (min-width: $medium) and (max-width: $large) {
+                width: 160px;
+            }
+
+            @media (max-width: $medium) {
+                display: none;
+            }
+        }
+
+    }
+
+} 

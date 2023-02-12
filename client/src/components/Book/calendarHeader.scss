@@ -1,0 +1,19 @@
+@import "../vars";
+@import "../mixins";
+
+.header {
+    
+    .top-header {
+      width: 100%;
+      @include flex(row, space-between, center);
+      background-color: #7e6c33;
+
+      > div {
+        color: white;
+        font-size: 1.5rem;
+        font-family: $base-font;
+        text-transform: uppercase;
+      }
+
+    }
+  }

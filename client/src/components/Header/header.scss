@@ -1,0 +1,97 @@
+@import "../mixins";
+@import "../vars";
+@import "../keyframes";
+
+.header {
+  position: relative;
+  @include flex(row, center, center);
+  overflow: hidden;
+
+  .img {
+    //doto : set image size for each width
+    min-width: 1920px;
+
+    -webkit-animation: zoomEffect 10s;
+    -o-animation: zoomEffect 10s;
+    animation: zoomEffect 10s;
+    transition: all 10s ease-in-out;
+  }
+
+  .header-text {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    z-index: 2;
+    color: white;
+    width: 500px;
+
+    .title {
+      font-size: 3rem;
+      text-transform: capitalize;
+      font-family: $alternative-font;
+      margin-bottom: 1rem;
+    }
+
+    .text {
+      font-size: 1rem;
+      font-family: $base-font;
+      font-weight: bold;
+      backdrop-filter: blur(4px);
+      margin-bottom: 1rem;
+    }
+
+    .book-button,
+    .about-button {
+      display: inline-block;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+      font-family: $base-font;
+      width: fit-content;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      width: 160px;
+      height: 60px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 60px;
+      background-color: #7e6c33;
+
+      &:hover {
+        background-color: transparent;
+        border: 1px solid #7e6c33;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+
+    .about-button {
+      margin-right: 2rem;
+      background-color: transparent;
+      border: 1px solid white;
+    }
+
+    @media (max-width: $large) and (min-width: $small) {
+      left: calc(10%);
+    }
+
+    @media (max-width: $small) {
+      left: calc(2.5% + 2rem);
+      width: 300px;
+      top: 20%;
+      .title {
+        font-size: 2rem;
+      }
+      .text {
+        font-size: 1rem;
+      }
+      .book-button,
+      .about-button {
+        width: 100px;
+        height: 37.5px;
+        line-height: 37.5px;
+        font-size: 1rem;
+      }
+
+
+    }
+  }
+}

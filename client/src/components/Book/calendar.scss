@@ -1,0 +1,41 @@
+@import "../vars";
+@import "../mixins";
+
+.calendar {
+  width: fit-content;
+  height: auto;
+  background: black;
+
+  .body {
+
+    .day, .week {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: uppercase;
+      line-height: 50px;
+      height: 50px;
+      width: 50px;
+      font-family: $base-font;
+      color: white;
+      background: black;
+      font-size: 1.5rem;
+      cursor: pointer;
+
+      .selected {
+        color: white;
+        background-color: #7e6c33;
+      }
+
+      .before {
+        color: grey;
+        cursor: default;
+      }
+
+      .today {
+        color: black;
+        background-color: white;
+      }
+    }
+  }
+}
