@@ -1,43 +1,107 @@
-import React, { useEffect, useState } from "react";
-
-import moment from "moment";
-import Calendar from "./Calendar/calendar";
+import React, { useState, useRef } from "react";
 import Booking from "./Booking/booking";
+import { useAppContext } from "../../providers/appProvider";
+import validateBookingForm from "./Booking/validateBooking";
 
 import "./book.scss";
 
 const Book = () => {
-  const [value, setValue] = useState(moment());
-  const [bookings, setBookings] = useState([]);
+  const { value, bookings, displayTimeSlots } = useAppContext();
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [time, setTime] = useState("");
+
+  const [alert, setAlert] = useState(false);
+
+  const ref = useRef({
+    alertMessage: "",
+  });
 
   const URL_booking = "http://localhost:8080/booking";
-
-  useEffect(() => {
-    fetch(URL_booking + "/getAll")
-      .then((response) => response.json())
-      .then((responseData) => setBookings(responseData));
-  }, []);
+  const handleClick = (e) => {
+    e.preventDefault();
+    const date = value.clone().format("YYYY-MM-DD");
+    const booking = {
+      date,
+      name,
+      phone,
+      time,
+    };
+    const result = validateBookingForm(booking);
+    if (result) {
+      ref.current.alertMessage = result;
+      setAlert(true);
+      console.log(ref.current.alertMessage);
+    } else {
+      console.log(booking);
+      fetch(URL_booking + "/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(booking),
+      }).then((response) => console.log(response));
+    }
+  };
 
   return (
     <section className="book">
-      <div className="wrapper">
-        <div className="left-section">
-          <div className="left-title">Call & Booking</div>
-          <div className="left-sub-title">Phone and Address</div>
-          <div className="left-text">
-            <p>234 Carlson St, Oshawa, P2R 6T4</p>
-            <p>Phone: +1 787 395 9879</p>
-            <p>Email: bianchi@barbershop.com</p>
+      {displayTimeSlots && (
+        <div className="wrapper">
+          <div className="left-section">
+            <div className="">
+              <div className="left-title">
+                {value.clone().format("MMMM DD YYYY")}
+              </div>
+              <Booking bookings={bookings} value={value} setTime={setTime} />
+            </div>
           </div>
-          <Calendar value={value} onChange={setValue} />
-        </div>
-        <div className="right-section">
-          <div className="right-title">
-            {value.clone().format("MMMM DD YYYY")}
+          <div className="right-section">
+            {alert && (
+              <div className="booking-alert">{ref.current.alertMessage}</div>
+            )}
+
+            <form>
+                <label>
+                  <p>Name</p>
+                  <input
+                    name="name"
+                    type="text"
+                    maxLength={255}
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                <label>
+                  <p>Phone</p>
+                  <input
+                    name="phone"
+                    type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="Ex: 375 987 6987"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </label>
+                <label>
+                  <input
+                    name="checkbox"
+                    type="checkbox"
+                    required
+                    value={checked}
+                    onChange={(e) => setChecked(e.target.value)}
+                  />
+                  Confirm selected time slot
+                </label>
+              <button type="submit" onClick={handleClick}>
+                Book
+              </button>
+            </form>
           </div>
-          <Booking bookings={bookings} value={value}/>
         </div>
-      </div>
+      )}
     </section>
   );
 };

@@ -16,8 +16,8 @@ function App() {
       <Header/>
       <About/>
       <Menu/>
-      <Book/>
       <FindUs/>
+      <Book/>
       <Footer/>
     </AppProvider>
   );

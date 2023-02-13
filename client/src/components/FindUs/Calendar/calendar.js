@@ -5,14 +5,19 @@ import dayStyles, { beforeToday } from "./styles";
 import "./calendar.scss";
 import Header from "./calendarHeader";
 
-const Calendar = ({ value, onChange }) => {
+const Calendar = ({ value, onChange, onClick }) => {
   const [calendar, setCalendar] = useState([]);
 
   useEffect(() => {
     setCalendar(buildCalendar(value));
   }, [value]);
 
-
+  function onDayClick(day) {
+    if (!beforeToday(day)) {
+      onChange(day);
+      onClick(true);
+    }
+  }
 
   return (
     <div className="calendar">
@@ -29,7 +34,7 @@ const Calendar = ({ value, onChange }) => {
               <div
                 key={week + day}
                 className="day"
-                onClick={() => !beforeToday(day) && onChange(day)}
+                onClick={() => onDayClick(day)}
               >
                 <div className={dayStyles(day, value)}>{day.format("D")}</div>
               </div>

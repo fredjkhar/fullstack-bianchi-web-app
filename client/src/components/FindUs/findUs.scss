@@ -1,0 +1,43 @@
+@import "../vars";
+@import "../mixins";
+
+.findUs {
+  background-color: #333;
+  @include flex(row, center, center);
+
+  .wrapper {
+    @include flex(row, space-around, center);
+    margin: 3rem 0;
+    width: 70%;
+    .left-section {
+      width: 50%;
+
+      .left-title {
+        margin-bottom: 10px;
+        color: white;
+        font-family: $alternative-font;
+        font-size: 2.5rem;
+        text-transform: uppercase capitalize;
+      }
+
+      .left-sub-title {
+        color: #7e6c33;
+        font-family: $base-font;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .left-text {
+        color: white;
+        font-family: $base-font;
+        font-size: 1.2rem;
+      }
+    }
+
+    .right-section {
+      @include flex(column, space-around, center);
+      width: 50%;
+    }
+  }
+}

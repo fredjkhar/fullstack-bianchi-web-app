@@ -22,6 +22,9 @@ public class Booking {
     @Column(name = "booking_time", nullable = false)
     private Time time;
 
+    @Column(name = "booking_phone", nullable = false)
+    private String phone;
+
     public Booking() {
     }
 
@@ -55,5 +58,13 @@ public class Booking {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

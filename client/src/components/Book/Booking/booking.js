@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import getAvailableTimeSlots, { availableTimeSlots } from "./AvailableBookings";
 
-const Booking = ({ bookings, value }) => {
+import "./booking.scss";
+
+const Booking = ({ bookings, value, setTime }) => {
   const [availableSelectedDayTimeSlots, setAvailableSelectedDayTimeSlots] =
     useState([]);
 
@@ -10,18 +12,31 @@ const Booking = ({ bookings, value }) => {
     getAvailableTimeSlots(value, bookings, setAvailableSelectedDayTimeSlots);
   }, [value, bookings]);
 
+  const handleClick = (timeSlot) => {
+    setTime(timeSlot);
+  };
+
   return (
     <div className="time-rows">
-      {availableSelectedDayTimeSlots.map((timeSlot) => (
-        <div className="right-row">
-          <div
-            className={"" + availableTimeSlots.includes(timeSlot) && " booked"}
-          >
+      {availableTimeSlots.map((timeSlot, i) => (
+        <div
+          className={
+            "right-row " +
+            (!availableSelectedDayTimeSlots.includes(timeSlot) && " booked")
+          }
+        >
+          <div key={i + "_text"} className="time-slot">
             {timeSlot.length === 8
               ? timeSlot.substring(0, 5)
               : timeSlot.substring(0, 4)}
           </div>
-          <div className="right-button">Book</div>
+          <div
+            key={i}
+            className="right-button"
+            onClick={() => handleClick(timeSlot)}
+          >
+            select
+          </div>
         </div>
       ))}
     </div>

@@ -1,0 +1,50 @@
+@import "../../vars";
+@import "../../mixins";
+
+.time-rows {
+    width: 100%;
+
+    .right-row {
+        @include flex(row, space-between, center);
+        background-color: black;
+        width: 350px;
+        padding: 5px 1rem;
+        color: white;
+        font-size: 1.2rem;
+        font-family: $base-font;
+
+        &.booked {
+            .right-button {
+                background-color: gray;
+
+                &:hover {
+                    background-color: gray;
+                    transition: none;
+                    cursor: default;
+                }
+            }
+        }
+
+        .time-slot {
+          width: 50px;
+          text-align: right;
+        }
+
+        .right-button {
+          @include flex(row, center, center);
+          width: 60px;
+          height: 40px;
+          background-color: #7e6c33;
+
+          color: white;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: transparent;
+            border: 1px solid #7e6c33;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+}
