@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
-import { containerStyle, center, time, styles} from './gMapStyles';
+import React, { useEffect, useState } from "react";
+
 import moment from "moment";
-import Calendar from "./calendar";
+import Calendar from "./Calendar/calendar";
+import Booking from "./Booking/booking";
 
 import "./book.scss";
 
-
-
 const Book = () => {
   const [value, setValue] = useState(moment());
+  const [bookings, setBookings] = useState([]);
+
+  const URL_booking = "http://localhost:8080/booking";
+
+  useEffect(() => {
+    fetch(URL_booking + "/getAll")
+      .then((response) => response.json())
+      .then((responseData) => setBookings(responseData));
+  }, []);
+
   return (
     <section className="book">
       <div className="wrapper">
@@ -21,30 +29,15 @@ const Book = () => {
             <p>Phone: +1 787 395 9879</p>
             <p>Email: bianchi@barbershop.com</p>
           </div>
-          <Calendar
-            value={value}
-            onChange={setValue}
-          />
+          <Calendar value={value} onChange={setValue} />
         </div>
         <div className="right-section">
-            <LoadScript googleMapsApiKey="AIzaSyAW16NdR4wD3pFTCw2Z-iEfFZxGuwcOwmg">
-              <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={16}
-                options={{
-                  zoomControl: true,
-                  streetViewControl: false,
-                  mapTypeControl: false,
-                  fullscreenControl: false,
-                  styles: styles
-                }}
-              >
-                <MarkerF position={center} />
-              </GoogleMap>
-            </LoadScript>
+          <div className="right-title">
+            {value.clone().format("MMMM DD YYYY")}
           </div>
+          <Booking bookings={bookings} value={value}/>
         </div>
+      </div>
     </section>
   );
 };

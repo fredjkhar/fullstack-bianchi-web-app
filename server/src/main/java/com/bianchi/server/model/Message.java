@@ -23,11 +23,15 @@ public class Message {
     }
 
     public int getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -35,7 +39,7 @@ public class Message {
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 
     public void setMessage(String message) {

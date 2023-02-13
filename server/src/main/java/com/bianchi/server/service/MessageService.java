@@ -8,4 +8,5 @@ public interface MessageService {
     public Message saveMessage(Message message);
     public List<Message> getAllMessages();
 
+
 }
