@@ -8,8 +8,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./book.scss";
 
 const Book = () => {
-  const { value, bookings, displayTimeSlots, setDisplayTimeSlots, setSuccessMessage } =
-    useAppContext();
+  const {
+    value,
+    bookings,
+    displayTimeSlots,
+    setDisplayTimeSlots,
+    setSuccessMessage,
+  } = useAppContext();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,7 +24,8 @@ const Book = () => {
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
 
-  const URL_booking = "http://localhost:8080/booking";
+  const URL_booking =
+    "https://ec2-3-144-149-118.us-east-2.compute.amazonaws.com:8080//booking";
   const handleClick = (e) => {
     e.preventDefault();
     alert && setAlert(false);
@@ -38,7 +44,9 @@ const Book = () => {
     } else {
       fetch(URL_booking + "/post", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(booking),
       }).then((res) => {
         if (res.status === 200 && res.ok === true) {

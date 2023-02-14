@@ -21,7 +21,7 @@ const FindUs = () => {
     successMessage
   } = useAppContext();
 
-  const URL_booking = "http://localhost:8080/booking";
+  const URL_booking = "https://ec2-3-144-149-118.us-east-2.compute.amazonaws.com:8080/booking";
 
   useEffect(() => {
     fetch(URL_booking + "/getAll")
