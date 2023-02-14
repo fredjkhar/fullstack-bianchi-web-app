@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import { containerStyle, center, styles } from "./gMapStyles";
-import { useAppContext } from '../../providers/appProvider';
+import { useAppContext } from "../../providers/appProvider";
 
 import Calendar from "./Calendar/calendar";
 
+import CloseIcon from "@mui/icons-material/Close";
 
 import "./findUs.scss";
 
 const FindUs = () => {
-
-  const { value, setValue, setBookings, setDisplayTimeSlots} = useAppContext();
+  const {
+    value,
+    setValue,
+    setBookings,
+    setDisplayTimeSlots,
+    displayTimeSlots,
+    setSuccessMessage,
+    successMessage
+  } = useAppContext();
 
   const URL_booking = "http://localhost:8080/booking";
 
@@ -23,6 +31,19 @@ const FindUs = () => {
 
   return (
     <section className="findUs">
+      {!displayTimeSlots && successMessage && (
+        <div className="success-message">
+          Your appointment has been successfully booked.
+          <CloseIcon
+            sx={{
+              color: "white",
+              cursor: "pointer",
+              width: "30px",
+            }}
+            onClick={() => setSuccessMessage(false)}
+          />
+        </div>
+      )}
       <div className="wrapper">
         <div className="left-section">
           <div className="left-title">Call & Booking</div>

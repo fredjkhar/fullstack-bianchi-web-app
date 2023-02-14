@@ -1,4 +1,4 @@
-const validateBookingForm = (booking) => {
+const validateBookingForm = (booking, checked) => {
   const { name, phone, time } = booking;
   if (name === "" || phone === "") {
     return "One or more fields are empty. Please fill in all fields.";
@@ -9,6 +9,9 @@ const validateBookingForm = (booking) => {
   }
   if (time === "") {
     return "Please select a time slot"
+  }
+  if (!checked) {
+    return "Please check the box below to confirm the time slot."
   }
   return false;
 };

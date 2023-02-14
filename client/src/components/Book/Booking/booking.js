@@ -35,7 +35,7 @@ const Booking = ({ bookings, value, setTime }) => {
             className="right-button"
             onClick={() => handleClick(timeSlot)}
           >
-            select
+            {availableSelectedDayTimeSlots.includes(timeSlot) ? "select" : "booked"}
           </div>
         </div>
       ))}

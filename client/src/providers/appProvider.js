@@ -36,12 +36,7 @@ const en = {
     j: "steam shave",
     k: "head shave",
     l: "beard trimming",
-  },
-  squad: {
-    b: "Brad is a very talented professional with deep expertise in classic haircuts and styles.",
-    c: "If you want a modern haircut, Maxim is the man to choose. He gained a lot popularity throughout the years thanks to his magic touch.",
-    d: "Need an advice or wanna try a new haircut? Vittorio is here. Some people say that he started cutting his own hair when he was 6.",
-  },
+  }
 };
 
 const fr = {
@@ -75,12 +70,7 @@ const fr = {
     j: "rasage à la vapeur",
     k: "rasage des cheveux",
     l: "taille de la barbe",
-  },
-  squad: {
-    b: "Brad est un professionnel très talentueux, spécialisé dans les coupes de cheveux et les styles classiques.",
-    c: "Si vous voulez une coupe de cheveux moderne, Maxim est l'homme à choisir. Il a gagné beaucoup de popularité au fil des ans grâce à sa touche magique.",
-    d: "Vous avez besoin d'un conseil ou vous voulez essayer une nouvelle coupe de cheveux ? Vittorio est là. Certaines personnes disent qu'il a commencé à se couper les cheveux à l'âge de 6 ans.",
-  },
+  }
 };
 
 const AppProvider = ({ children }) => {
@@ -90,6 +80,7 @@ const AppProvider = ({ children }) => {
   const [value, setValue] = useState(moment());
   const [bookings, setBookings] = useState([]);
   const [displayTimeSlots, setDisplayTimeSlots] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(false);
 
   return (
     <AppContext.Provider
@@ -102,6 +93,8 @@ const AppProvider = ({ children }) => {
         setBookings,
         displayTimeSlots,
         setDisplayTimeSlots,
+        successMessage,
+        setSuccessMessage
       }}
     >
       <div className="wrapper">{children}</div>

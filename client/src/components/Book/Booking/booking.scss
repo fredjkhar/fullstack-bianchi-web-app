@@ -12,13 +12,18 @@
         color: white;
         font-size: 1.2rem;
         font-family: $base-font;
+        text-transform: capitalize;
+
+        &:hover {
+          background-color: #333;
+        }
 
         &.booked {
             .right-button {
-                background-color: gray;
+                background-color: #333;
 
                 &:hover {
-                    background-color: gray;
+                    background-color: #333;
                     transition: none;
                     cursor: default;
                 }
@@ -34,6 +39,7 @@
           @include flex(row, center, center);
           width: 60px;
           height: 40px;
+          margin: 2px;
           background-color: #7e6c33;
 
           color: white;
