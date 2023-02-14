@@ -25,7 +25,7 @@ const Book = () => {
   const [alertMessage, setAlertMessage] = useState(false);
 
   const URL_booking =
-    "https://ec2-3-144-149-118.us-east-2.compute.amazonaws.com:8080//booking";
+    "http://localhost:8080/booking";
   const handleClick = (e) => {
     e.preventDefault();
     alert && setAlert(false);
@@ -58,7 +58,7 @@ const Book = () => {
   };
 
   return (
-    <section className="book">
+    <section className="book" id="timeSlots">
       {displayTimeSlots && (
         <div className="wrapper">
           <div className="left-section">

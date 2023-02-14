@@ -2,16 +2,19 @@
 @import '../vars';
 
 .menu {
-    width: 100vw;
-    height: 100vh;
     background: url('../../Assets/background_1.jpg') no-repeat center;
     @include flex(row, center, center);
     .wrapper {
-        @include flex(row, space-between, center);
+        @include flex(row, space-around, center);
         font-family: $base-font;
         color: white;
-        width: 70%;
-        
+        width: 80%;
+        overflow: hidden;
+        padding: 3rem 1rem;
+
+        @media (max-width: $small) {
+            @include flex(column, space-around, center);
+        }
         
         .left-section, .right-section {
             &-title {
@@ -72,6 +75,13 @@
                 font-size: 1.1rem;
             }
 
+            @media (max-width: $small) {
+                &-title {
+                    font-size: 1.2rem;
+                }
+                font-size: 1rem;
+            }
+
         }
 
         img {
@@ -89,11 +99,11 @@
             }
 
             @media (min-width: $large) and (max-width: $extra-large) {
-                width: 180px;
+                width: 150px;
             }
 
             @media (min-width: $medium) and (max-width: $large) {
-                width: 160px;
+                width: 130px;
             }
 
             @media (max-width: $medium) {

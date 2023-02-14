@@ -7,8 +7,8 @@
   background: black;
 
   .body {
-
-    .day, .week {
+    .day,
+    .week {
       display: inline-block;
       text-align: center;
       vertical-align: middle;
@@ -17,10 +17,36 @@
       height: 50px;
       width: 50px;
       font-family: $base-font;
-      color: white;
       background: black;
       font-size: 1.5rem;
       cursor: pointer;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      
+      @media (min-width: $medium) and (max-width: $large) {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 1.3rem;
+      }
+
+      @media (min-width: $small) and (max-width: $medium) {
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: $small) {
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        font-size: 1rem;
+
+      }
 
       .selected {
         color: white;
@@ -33,7 +59,9 @@
       }
 
       .today {
-        color: black;
+        a {
+          color: black;
+        }
         background-color: white;
       }
     }

@@ -8,13 +8,15 @@
   overflow: hidden;
 
   .img {
-    //doto : set image size for each width
-    min-width: 1920px;
-
+    min-height: 600px;
     -webkit-animation: zoomEffect 10s;
     -o-animation: zoomEffect 10s;
     animation: zoomEffect 10s;
     transition: all 10s ease-in-out;
+
+    @media (max-width: $small) {
+      min-height: 500px;
+    }
   }
 
   .header-text {
@@ -61,6 +63,11 @@
         border: 1px solid #7e6c33;
         transition: all 0.5s ease-in-out;
       }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
 
     .about-button {
@@ -70,13 +77,13 @@
     }
 
     @media (max-width: $large) and (min-width: $small) {
-      left: calc(10%);
+      left: 10%;
     }
 
     @media (max-width: $small) {
-      left: calc(2.5% + 2rem);
-      width: 300px;
-      top: 20%;
+      left: calc(2.5% + 0.5rem);
+      width: 280px;
+      top: 15%;
       .title {
         font-size: 2rem;
       }
@@ -90,8 +97,21 @@
         line-height: 37.5px;
         font-size: 1rem;
       }
+    }
 
+    @media (min-width: $small) and (max-width: $large) {
+      width: 450px;
+      .title {
+        font-size: 2.5rem;
+      }
 
+      .book-button,
+      .about-button {
+        width: 120px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 1.2rem;
+      }
     }
   }
 }

@@ -18,10 +18,23 @@
 
   .wrapper {
     @include flex(row, space-around, center);
-    margin: 3rem 0;
-    width: 70%;
+    padding: 3rem 1rem;
+    width: 80%;
+
+    @media (max-width: $medium) {
+      @include flex(column-reverse, center, center);
+      width: 100%;
+      padding: 0;
+    }
     .left-section {
       width: 50%;
+
+      @media (max-width: $medium) {
+        @include flex(column, center, center);
+        width: 100%;
+        text-align: center;
+        padding-top: 2rem;
+      }
 
       .left-title {
         margin-bottom: 10px;
@@ -29,6 +42,22 @@
         font-family: $alternative-font;
         font-size: 2.5rem;
         text-transform: uppercase capitalize;
+
+        @media (min-width: $large) and (max-width: $extra-large) {
+          font-size: 2rem;
+        }
+
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $small) and (max-width: $medium) {
+          font-size: 1.4rem;
+        }
+
+        @media (max-width: $small) {
+          font-size: 1.2rem;
+        }
       }
 
       .left-sub-title {
@@ -37,18 +66,61 @@
         font-size: 2rem;
         font-weight: bold;
         margin-bottom: 10px;
+
+        @media (min-width: $extra-large) {
+          font-size: 2.5rem;
+        }
+
+        @media (min-width: $large) and (max-width: $extra-large) {
+          font-size: 2rem;
+        }
+
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $small) and (max-width: $medium) {
+          font-size: 1.4rem;
+        }
+
+        @media (max-width: $small) {
+          font-size: 1.2rem;
+        }
       }
 
       .left-text {
         color: white;
         font-family: $base-font;
         font-size: 1.2rem;
+
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.1rem;
+        }
+
+        @media (min-width: $small) and (max-width: $medium) {
+          font-size: 1.1rem;
+        }
+
+        @media (max-width: $small) {
+          font-size: 1rem;
+        }
       }
     }
 
     .right-section {
       @include flex(column, space-around, center);
       width: 50%;
+      padding: 5px;
+
+      @media (max-width: $medium) {
+        width: 100%;
+        padding: 0;
+
+      }
+
+      @media (min-width: $medium) and (max-width: $large) {
+        height: 500px;
+      }
     }
   }
 }

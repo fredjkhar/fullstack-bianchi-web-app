@@ -16,34 +16,34 @@ const Header = () => {
       <Carousel
         className="carousel"
         fade
-        controls={true}
+        controls={false}
         keyboard={false}
         indicators={false}
       >
         <Carousel.Item interval={2500}>
           <img
-            className="img"
+            className="img img-fluid"
             src={require("../../Assets/slide_img_1.png")}
             alt="first carousel slide"
           />
         </Carousel.Item>
         <Carousel.Item interval={2500}>
           <img
-            className="img"
+            className="img img-fluid"
             src={require("../../Assets/slide_img_2.png")}
             alt="second carousel slide"
           />
         </Carousel.Item>
         <Carousel.Item interval={2500}>
           <img
-            className="img"
+            className="img img-fluid"
             src={require("../../Assets/slide_img_3.png")}
             alt="third carousel slide"
           />
         </Carousel.Item>
         <Carousel.Item interval={2500}>
           <img
-            className="img"
+            className="img img-fluid"
             src={require("../../Assets/slide_img_4.png")}
             alt="fourth carousel slide"
           />
@@ -53,8 +53,12 @@ const Header = () => {
       <div className="header-text">
         <div className="title">{data.header.a}</div>
         <div className="text">{data.header.b}</div>
-        <div className="about-button">{data.header.d}</div>
-        <div className="book-button">{data.header.c}</div>
+        <div className="about-button">
+          <a href="#about">{data.header.d}</a>
+        </div>
+        <div className="book-button">
+          <a href="#book">{data.header.c}</a>
+        </div>
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ const FindUs = () => {
   }, []);
 
   return (
-    <section className="findUs">
+    <section className="findUs" id="book">
       {!displayTimeSlots && successMessage && (
         <div className="success-message">
           Your appointment has been successfully booked.

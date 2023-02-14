@@ -7,12 +7,22 @@
   @include flex(row, center, center);
   .wrapper {
     @include flex(row, space-around, center);
-    width: 70%;
-    margin: 3rem 0;
+    width: 80%;
+    padding: 3rem 1rem;
+
+    @media (max-width: $medium) {
+      @include flex(column, space-between, center);
+      width: 100%;
+    }
 
     .left-section {
       @include flex(row, space-between, center);
       width: 50%;
+
+      @media (max-width: $medium) {
+        @include flex(column, space-between, center);
+        width: 100%;
+      }
 
       .left-title {
         font-size: 1.5rem;
@@ -20,12 +30,50 @@
         background-color: #7e6c33;
         width: 350px;
         font-family: $base-font;
+        text-transform: uppercase;
         text-align: center;
+  
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.3rem;
+          width: 280px;
+          margin-left: -1rem;
+        }
+  
+        @media (min-width: $small) and (max-width: $medium) {
+          width: 245px;
+          font-size: 1.2rem;
+        }
+  
+        @media (max-width: $small) {
+          width: 245px;
+          font-size: 1rem;
+        }
       }
+
+      
+
+
+
     }
     .right-section {
       @include flex(column, center, center);
       width: 50%;
+
+      @media (max-width: $medium) {
+        width: 100%;
+      }
+
+      @media (min-width: $medium) and (max-width: $large) {
+        font-size: 1.1rem;
+      }
+
+      @media (min-width: $small) and (max-width: $medium) {
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: $small) {
+        font-size: 1rem;
+      }
 
       .booking-alert {
         @include flex(row, space-between, center);
@@ -83,11 +131,22 @@
         line-height: 60px;
         border: none;
 
+        @media (max-width: $medium) {
+          width: 120px;
+          height: 45px;
+          line-height: 45px;
+        }
+
         &:hover {
           background-color: transparent;
           border: 1px solid #7e6c33;
           transition: all 0.5s ease-in-out;
         }
+      }
+
+      @media (max-width: $medium) {
+        @include flex(column, space-between, center);
+        width: 100%;
       }
     }
   }

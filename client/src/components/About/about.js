@@ -11,16 +11,17 @@ const About = () => {
   const { data } = useAppContext();
 
   return (
-    <section className="about">
+    <section className="about" id="about">
       <div className="wrapper">
         <div className="left-section">
           <div className="about-title">{data.about.a}</div>
           <div className="about-text">{data.about.b}</div>
           <div className="about-achievements">
-          <div className="achievement">
+            <div className="achievement">
               <img
+                className="diamond"
                 src={diamond}
-                style={{ height: "50px" , marginTop: "30px"}}
+                style={{ height: "50px", marginTop: "30px" }}
                 alt="diamond-icon"
               />
 
@@ -30,11 +31,15 @@ const About = () => {
               </div>
             </div>
             <div className="achievement">
-              <img src={person} style={{ height: "50px" }} alt="person-icon" />
+              <img
+                className="person"
+                src={person}
+                style={{ height: "50px" }}
+                alt="person-icon"
+              />
               <div className="achievement-metric">+5400</div>
               <div className="achievement-text">happy and loyal customers</div>
             </div>
-
           </div>
         </div>
         <div className="right-section">

@@ -14,10 +14,15 @@ const Navbar = ({ data, switchLang }) => {
           <span>professional</span>
         </div>
         <ul className="nav_list-center">
-          <li>{data.navbar.a}</li>
-          <li>{data.navbar.b}</li>
-          <li>{data.navbar.c}</li>
-          <li>{data.navbar.d}</li>
+          <li>
+            <a href="#about">{data.navbar.a}</a>
+          </li>
+          <li>
+            <a href="#menu">{data.navbar.b}</a>
+          </li>
+          <li>
+            <a href="#book">{data.navbar.d}</a>
+          </li>
         </ul>
         <ul className="nav_list-right">
           <li onClick={switchLang}>{data.lang}</li>
@@ -30,16 +35,13 @@ const Navbar = ({ data, switchLang }) => {
         </ul>
       </nav>
       <div className={"dr-menu-item-1 " + (!expanded ? "expanded" : "")}>
-        {data.navbar.d}
+      <a href="#about">{data.navbar.a}</a>
       </div>
       <div className={"dr-menu-item-2 " + (!expanded ? "expanded" : "")}>
-        {data.navbar.a}
+      <a href="#menu">{data.navbar.b}</a>
       </div>
       <div className={"dr-menu-item-3 " + (!expanded ? "expanded" : "")}>
-        {data.navbar.b}
-      </div>
-      <div className={"dr-menu-item-4 " + (!expanded ? "expanded" : "")}>
-        {data.navbar.c}
+      <a href="#book">{data.navbar.d}</a>
       </div>
     </>
   );

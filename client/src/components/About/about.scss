@@ -8,7 +8,8 @@
   overflow: hidden;
   .wrapper {
     @include flex(row, center, center);
-    width: 70%;
+    width: 100%;
+    padding: 1rem 1rem;
 
     @media (max-width: $medium) {
       flex-direction: column;
@@ -16,7 +17,7 @@
     }
 
     .right-section {
-      @include flex(column, space-around, center);
+      @include flex(column, space-between, center);
       width: 50%;
       > img {
         padding: 10px;
@@ -45,15 +46,29 @@
     }
     .left-section {
       width: 50%;
-      @include flex(column, space-around, flex-start);
+      @include flex(column, space-between, center);
+      
+      @media (min-width: $extra-large) {
+        width: 600px;
+      }
+
+      @media (min-width: $large) and (max-width: $extra-large) {
+        width: 500px;
+      }
+
+      @media (max-width: $medium) {
+        width: 100%;
+      }
 
       .about-title {
         text-transform: capitalize;
         color: white;
         font-family: $alternative-font;
+        margin: 0 1rem;
+        width: 100%;
 
         @media (min-width: $extra-large) {
-          width: 600px;
+          
           font-size: 2.5rem;
         }
 
@@ -66,22 +81,24 @@
         }
 
         @media (min-width: $small) and (max-width: $medium) {
-          font-size: 1.5rem;
           text-align: center;
+          font-size: 1.5rem;
         }
 
         @media (max-width: $small) {
-          margin-top: 1.5rem;
-          font-size: 1rem;
           text-align: center;
+          margin-top: 1.5rem;
+          font-size: 1.3rem;
         }
       }
       .about-text {
         backdrop-filter: blur(2px);
         color: white;
         line-height: 35px;
+        margin: 5px;
+        width: 100%;
+
         @media (min-width: $extra-large) {
-          width: 600px;
           font-size: 1.2rem;
         }
 
@@ -96,25 +113,55 @@
         @media (min-width: $small) and (max-width: $medium) {
           margin-top: 1rem;
           font-size: 1rem;
-          text-align: center;
         }
 
         @media (max-width: $small) {
           margin-top: 1rem;
           font-size: 1rem;
-          text-align: center;
         }
       }
 
       .about-achievements {
-        width: 600px;
+        width: 100%;
         @include flex(row, space-between, center);
         margin-top: 1rem;
         align-items: center;
 
+
+        @media (min-width: $large) and (max-width: $extra-large) {
+          font-size: 1.2rem;
+        }
+
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.2rem;
+        }
+
+        @media (min-width: $small) and (max-width: $medium) {
+          margin-top: 1rem;
+          font-size: 1rem;
+        }
+
+        @media (max-width: $small) {
+          margin-top: 1rem;
+          font-size: 1rem;
+        }
+
         .achievement {
           @include flex(column, center, center);
           width: 280px;
+
+          @media (min-width: $medium) and (max-width: $large) {
+            .person, .diamond {
+              display: none;
+            }
+          }
+
+          @media (max-width: $small) {
+            .person, .diamond {
+              display: none;
+            }
+          }
+
 
           .achievement-metric {
             font-family: sans-serif;

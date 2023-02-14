@@ -28,15 +28,17 @@ const Calendar = ({ value, onChange, onClick }) => {
             <div className="week">{day}</div>
           ))}
         </div>
-        {calendar.map(week => (
+        {calendar.map((week) => (
           <div>
-            {week.map(day => (
+            {week.map((day) => (
               <div
                 key={week + day}
                 className="day"
                 onClick={() => onDayClick(day)}
               >
-                <div className={dayStyles(day, value)}>{day.format("D")}</div>
+                <div className={dayStyles(day, value)}>
+                  <a href="#timeSlots">{day.format("D")}</a>
+                </div>
               </div>
             ))}
           </div>
