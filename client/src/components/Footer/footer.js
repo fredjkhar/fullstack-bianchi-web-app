@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         <div className="github">
-          <a href="https://github.com/fredjkhar">
+          <a href="https://github.com/fredjkhar/fullstack-bianchi-web-app">
             <GitHubIcon
               sx={{
                 width: "40px",

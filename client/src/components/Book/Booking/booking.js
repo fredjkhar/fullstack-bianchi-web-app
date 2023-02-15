@@ -14,6 +14,15 @@ const Booking = ({ bookings, value, setTime }) => {
     getAvailableTimeSlots(value, bookings, setAvailableSelectedDayTimeSlots);
   }, [value, bookings]);
 
+  useEffect(() => {
+    if (selectedSlot !== null) {
+      selectedSlot.innerText = "Select";
+      selectedSlot.style.backgroundColor = "#7e6c33";
+      selectedSlot.style.color = "white";
+      setSelectedSlot(null);
+    }
+  }, [value]);
+
   const handleClick = (timeSlot, e) => {
     setTime(timeSlot);
     if (e.target.innerText === "Select") {
@@ -56,9 +65,9 @@ const Booking = ({ bookings, value, setTime }) => {
               handleClick(timeSlot, e)
             }
           >
-            {!availableSelectedDayTimeSlots.includes(timeSlot)
-              ? "booked"
-              : "select"}
+            {availableSelectedDayTimeSlots.includes(timeSlot)
+              ? "select"
+              : "booked"}
           </div>
         </div>
       ))}
