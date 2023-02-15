@@ -62,7 +62,8 @@ const Book = () => {
       {displayTimeSlots && (
         <div className="wrapper">
           <div className="left-section">
-            <div className="">
+            <div>
+            <div className="title">Select a time slot</div>
               <div className="left-title">
                 {value.clone().format("MMMM DD YYYY")}
               </div>

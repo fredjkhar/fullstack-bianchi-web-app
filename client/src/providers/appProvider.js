@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import "./appProvider.scss";
 import moment from "moment";
 
 const AppContext = React.createContext();

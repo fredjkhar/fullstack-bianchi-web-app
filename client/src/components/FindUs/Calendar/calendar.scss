@@ -25,7 +25,7 @@
         text-decoration: none;
         color: white;
       }
-      
+
       @media (min-width: $medium) and (max-width: $large) {
         height: 40px;
         width: 40px;
@@ -45,16 +45,20 @@
         width: 35px;
         line-height: 35px;
         font-size: 1rem;
-
       }
 
       .selected {
-        color: white;
+        a {
+          color: white;
+        }
+
         background-color: #7e6c33;
       }
 
       .before {
-        color: grey;
+        a {
+          color: grey;
+        }
         cursor: default;
       }
 

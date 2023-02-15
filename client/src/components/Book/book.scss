@@ -9,6 +9,7 @@
     @include flex(row, space-around, center);
     width: 80%;
     padding: 3rem 1rem;
+    overflow: hidden;
 
     @media (max-width: $medium) {
       @include flex(column, space-between, center);
@@ -22,6 +23,32 @@
       @media (max-width: $medium) {
         @include flex(column, space-between, center);
         width: 100%;
+      }
+
+      .title {
+        font-family: $alternative-font;
+        color: white;
+        text-transform: uppercase capitalize;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+
+        @media (min-width: $large) and (max-width: $extra-large) {
+          font-size: 2rem;
+        }
+
+        @media (min-width: $medium) and (max-width: $large) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $small) and (max-width: $medium) {
+          text-align: center;
+          font-size: 1.4rem;
+        }
+
+        @media (max-width: $small) {
+          text-align: center;
+          font-size: 1.2rem;
+        }
       }
 
       .left-title {

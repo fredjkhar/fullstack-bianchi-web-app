@@ -12,28 +12,29 @@ const Booking = ({ bookings, value, setTime }) => {
     getAvailableTimeSlots(value, bookings, setAvailableSelectedDayTimeSlots);
   }, [value, bookings]);
 
-  const handleClick = (timeSlot) => {
+  const handleClick = (timeSlot,e) => {
     setTime(timeSlot);
+    e.target.value = "selected";
   };
 
   return (
     <div className="time-rows">
-      {availableTimeSlots.map((timeSlot, i) => (
+      {availableTimeSlots.map((timeSlot, index) => (
         <div
           className={
             "right-row " +
             (!availableSelectedDayTimeSlots.includes(timeSlot) && " booked")
           }
         >
-          <div key={i + "_text"} className="time-slot">
+          <div key={index} className="time-slot">
             {timeSlot.length === 8
               ? timeSlot.substring(0, 5)
               : timeSlot.substring(0, 4)}
           </div>
           <div
-            key={i}
+            key={index + "btn"}
             className="right-button"
-            onClick={() => handleClick(timeSlot)}
+            onClick={(e) => availableSelectedDayTimeSlots.includes(timeSlot) && handleClick(timeSlot,e)}
           >
             {availableSelectedDayTimeSlots.includes(timeSlot) ? "select" : "booked"}
           </div>

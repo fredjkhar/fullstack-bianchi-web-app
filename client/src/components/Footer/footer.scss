@@ -1,4 +1,14 @@
+@import '../mixins';
+@import '../vars';
 
 .footer {
     background: url('../../Assets/background_1.jpg') center no-repeat;
+
+    .wrapper {
+        @include flex(row, space-around, center);
+        padding: 1rem;
+        font-size: 1rem;
+        font-family: $base-font;
+        color: white;
+    }
 }
