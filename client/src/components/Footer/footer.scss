@@ -10,5 +10,11 @@
         font-size: 1rem;
         font-family: $base-font;
         color: white;
+
+        @media (max-width: $medium) {
+            .copyrights, .links {
+                display: none;
+            }
+        }
     }
 }

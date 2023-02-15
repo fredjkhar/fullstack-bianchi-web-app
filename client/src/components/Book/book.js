@@ -24,8 +24,7 @@ const Book = () => {
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState(false);
 
-  const URL_booking =
-    "http://localhost:8080/booking";
+  const URL_booking = "http://localhost:8080/booking";
   const handleClick = (e) => {
     e.preventDefault();
     alert && setAlert(false);
@@ -42,18 +41,22 @@ const Book = () => {
       setAlertMessage(result);
       setAlert(true);
     } else {
-      fetch(URL_booking + "/post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(booking),
-      }).then((res) => {
-        if (res.status === 200 && res.ok === true) {
-          setSuccessMessage(true);
-          setDisplayTimeSlots(false);
-        }
-      });
+      try {
+        fetch(URL_booking + "/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(booking),
+        }).then((res) => {
+          if (res.status === 200 && res.ok === true) {
+            setSuccessMessage(true);
+            setDisplayTimeSlots(false);
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -63,7 +66,7 @@ const Book = () => {
         <div className="wrapper">
           <div className="left-section">
             <div>
-            <div className="title">Select a time slot</div>
+              <div className="title">Select a time slot</div>
               <div className="left-title">
                 {value.clone().format("MMMM DD YYYY")}
               </div>

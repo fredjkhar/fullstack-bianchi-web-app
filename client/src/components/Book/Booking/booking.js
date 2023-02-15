@@ -8,13 +8,29 @@ const Booking = ({ bookings, value, setTime }) => {
   const [availableSelectedDayTimeSlots, setAvailableSelectedDayTimeSlots] =
     useState([]);
 
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
   useEffect(() => {
     getAvailableTimeSlots(value, bookings, setAvailableSelectedDayTimeSlots);
   }, [value, bookings]);
 
-  const handleClick = (timeSlot,e) => {
+  const handleClick = (timeSlot, e) => {
     setTime(timeSlot);
-    e.target.value = "selected";
+    if (e.target.innerText === "Select") {
+      if (selectedSlot) {
+        selectedSlot.innerText = "Select";
+        selectedSlot.style.backgroundColor = "#7e6c33";
+        selectedSlot.style.color = "white";
+        setSelectedSlot(null);
+      }
+      e.target.innerText = "Selected";
+      e.target.style.backgroundColor = "white";
+      e.target.style.color = "black";
+      setSelectedSlot(e.target);
+    } else {
+      e.target.innerText = "Select";
+      setSelectedSlot(null);
+    }
   };
 
   return (
@@ -34,9 +50,15 @@ const Booking = ({ bookings, value, setTime }) => {
           <div
             key={index + "btn"}
             className="right-button"
-            onClick={(e) => availableSelectedDayTimeSlots.includes(timeSlot) && handleClick(timeSlot,e)}
+            id={index + "btn"}
+            onClick={(e) =>
+              availableSelectedDayTimeSlots.includes(timeSlot) &&
+              handleClick(timeSlot, e)
+            }
           >
-            {availableSelectedDayTimeSlots.includes(timeSlot) ? "select" : "booked"}
+            {!availableSelectedDayTimeSlots.includes(timeSlot)
+              ? "booked"
+              : "select"}
           </div>
         </div>
       ))}

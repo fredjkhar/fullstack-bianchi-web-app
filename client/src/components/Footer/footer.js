@@ -11,8 +11,8 @@ const Footer = () => {
   return (
     <section className="footer">
       <div className="wrapper">
-        <div>© 2015-2023 All Rights Reserved</div>
-        <div>
+        <div className="copyrights">© 2015-2023 All Rights Reserved</div>
+        <div className="links">
           <a href="https://www.facebook.com/">
             <FacebookIcon
               sx={{

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import { containerStyle, center, styles } from "./gMapStyles";
@@ -12,6 +12,7 @@ import "./findUs.scss";
 
 const FindUs = () => {
   const {
+    data,
     value,
     setValue,
     setBookings,
@@ -21,12 +22,16 @@ const FindUs = () => {
     successMessage
   } = useAppContext();
 
-  const URL_booking = "https://ec2-3-144-149-118.us-east-2.compute.amazonaws.com:8080/booking";
+  const URL_booking = "http://localhost:8080/booking";
 
   useEffect(() => {
-    fetch(URL_booking + "/getAll")
+    try {
+      fetch(URL_booking + "/getAll")
       .then((response) => response.json())
       .then((responseData) => setBookings(responseData));
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return (
@@ -46,11 +51,11 @@ const FindUs = () => {
       )}
       <div className="wrapper">
         <div className="left-section">
-          <div className="left-title">Call & Booking</div>
-          <div className="left-sub-title">Phone and Address</div>
+          <div className="left-title">{data.findUs.a}</div>
+          <div className="left-sub-title">{data.findUs.b}</div>
           <div className="left-text">
             <p>234 Carlson St, Oshawa, P2R 6T4</p>
-            <p>Phone: +1 787 395 9879</p>
+            <p>{data.findUs.c}: +1 787 395 9879</p>
             <p>Email: bianchi@barbershop.com</p>
           </div>
           <Calendar

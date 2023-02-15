@@ -35,6 +35,11 @@ const en = {
     j: "steam shave",
     k: "head shave",
     l: "beard trimming",
+  },
+  findUs: {
+    a: "Contact and Booking",
+    b: "Phone and address",
+    c: "phone"
   }
 };
 
@@ -69,6 +74,11 @@ const fr = {
     j: "rasage à la vapeur",
     k: "rasage des cheveux",
     l: "taille de la barbe",
+  },
+  findUs: {
+    a: "Contact et réservation",
+    b: "Téléphone et adresse",
+    c: "Téléphone"
   }
 };
 

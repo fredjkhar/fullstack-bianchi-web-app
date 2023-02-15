@@ -4,6 +4,7 @@
 .findUs {
   background-color: #333;
   @include flex(column, center, center);
+  padding: 3rem 1rem;
 
   .success-message {
     @include flex(row, space-between, center);
