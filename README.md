@@ -37,5 +37,4 @@ The primary objective of this project is to enhance and showcase my web developm
  
  https://bianchiprofessional.netlify.app/
  
- ### The online version does not have a functionnal backend; the booking mechanism won't work. The full experiment with the app, please follow the steps above.
- 
+ ### The online version does not have a working back-end; the booking mechanism will not work. To fully experience the application, please follow the steps above.
